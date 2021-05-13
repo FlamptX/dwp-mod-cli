@@ -19,7 +19,7 @@ else:
         except ValueError:
             print("Invalid user ID type. It must be int64 type.")
         else:
-            with open("./config.txt") as file:
+            with open("./auth.txt") as file:
                 token = file.readline()[:-2]
             headers = {
                 "authorization": token

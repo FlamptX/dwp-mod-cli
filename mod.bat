@@ -3,7 +3,7 @@ setlocal EnableDelayedExpansion
 
 if "%1" == "" (
     echo ========================================
-    type name.txt
+    type data\name.txt
     echo Commands:
         echo HELP        List of the commands
         echo UPDATE      Check for a new version of the CLI and update if there is any

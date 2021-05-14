@@ -19,6 +19,7 @@ if "%1" == "" (
         echo UNMUTE      Unmute a member - Usage: unmute {user ID} {optional reason}
     echo\
     echo ========================================
+    python update.py
 ) else (
     if "%1" == "help" (
         echo Commands:
@@ -67,4 +68,3 @@ if "%1" == "" (
         )
     )
 )
-python update.py

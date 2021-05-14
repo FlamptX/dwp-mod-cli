@@ -9,7 +9,9 @@ parser.add_argument("duration", nargs='?', default="")
 parser.add_argument('reason', nargs='*', default="")
 args = parser.parse_args()
 
-if args.user == "":
+if args.command not in ["warn", "kick", "ban", "tempban", "mute", "unmute"]:
+    print("Unknown command.")
+elif args.user == "":
     print("Missing the user ID argument.")
 elif args.duration == "":
     print("Missing the duration argument.")

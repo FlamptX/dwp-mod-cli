@@ -23,12 +23,17 @@ else:
     else:
         with open("./data/auth.txt") as file:
             token = file.readline()[:-2]
-        headers = {
-            "authorization": token
-        }
-        data = {
-            "content": f"?{args.command} {user_id} {args.duration} {' '.join(args.reason)}"
-        }
-        r = requests.post(f"https://discord.com/api/v8/channels/842377245867507742/messages", data=data, headers=headers)
-        if int(r.status_code) == 200:
-            print("Command sucessfully used.")
+        if token == "":
+            print("Run the command mod login before using the commands")
+        else:
+            headers = {
+                "authorization": token
+            }
+            data = {
+                "content": f"?{args.command} {user_id} {args.duration} {' '.join(args.reason)}"
+            }
+            r = requests.post(f"https://discord.com/api/v8/channels/842377245867507742/messages", data=data, headers=headers)
+            if int(r.status_code) == 200:
+                print("Command sucessfully used.")
+            else:
+                print("Command failed. Make sure that you logged in with a valid token.")

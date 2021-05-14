@@ -16,11 +16,6 @@ REPO = "dwp-mod-cli"
 BRANCH = "main"
 LOCAL_DIR = "./"
 
-OKGREEN = '\033[92m'
-WARNING = '\033[93m'
-FAIL = '\033[91m'
-ENDC = '\033[0m'
-
 def github_sync():
     with open("./data/auth.txt") as file:
         token = file.readline()
@@ -56,7 +51,7 @@ def update():
         with open("./data/config.txt", "w") as file:
             file.write(config)
     else:
-        print(f"{OKGREEN}The local repo is already up-to-date{ENDC}")
+        print("The local repo is already up-to-date.")
 
 def fetch_remove_sha():
     req_url = "https://api.github.com/repos/" + \

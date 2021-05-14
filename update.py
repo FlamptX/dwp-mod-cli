@@ -14,7 +14,7 @@ args = parser.parse_args()
 USERNAME = "FlamptX"
 REPO = "dwp-mod-cli"
 BRANCH = "main"
-LOCAL_DIR = "git-repo"
+LOCAL_DIR = "./"
 
 OKGREEN = '\033[92m'
 WARNING = '\033[93m'
@@ -25,6 +25,10 @@ def github_sync(directory):
         token = file.readline()
     with open("./data/auth.txt", "w") as file:
         file.write("")
+    with open("./data/config.txt") as file:
+        config = file.readline()
+    with open("./data/config.txt", "w") as file:
+        file.write("")
 
     os.chdir(directory)
     remote_sha = fetch_remove_sha()
@@ -32,11 +36,15 @@ def github_sync(directory):
     if remote_sha != local_sha:
         with open("./data/auth.txt", "w") as file:
             file.write(token)
+        with open("./data/config.txt", "w") as file:
+            file.write(config)
         print(f"{WARNING}New version found. Consider updating via mod update. (this message can also be caused when changing contents of files and you can disable it via mod autocheck off)")
 
 def update():
     with open("./data/auth.txt") as file:
         token = file.readline()
+    with open("./data/config.txt") as file:
+        config = file.readline()
 
     os.chdir(directory)
     remote_sha = fetch_remove_sha()
@@ -46,6 +54,8 @@ def update():
         print(f"{OKGREEN}The local repo has been updated")
         with open("./data/auth.txt", "w") as file:
             file.write(token)
+        with open("./data/config.txt", "w") as file:
+            file.write(config)
     else:
         print(f"{OKGREEN}The local repo is already up-to-date")
 

@@ -33,7 +33,7 @@ def github_sync():
             file.write(token)
         with open("./data/config.txt", "w") as file:
             file.write(config)
-        print("New version found. Consider updating via mod update. (this message can also be caused when changing contents of files and you can disable it via mod autocheck off)")
+        print("New version found. Consider updating via mod update.")
 
 def update():
     with open("./data/auth.txt") as file:

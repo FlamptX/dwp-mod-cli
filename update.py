@@ -33,7 +33,7 @@ def github_sync():
             file.write(token)
         with open("./data/config.txt", "w") as file:
             file.write(config)
-        print(f"{WARNING}New version found. Consider updating via mod update. (this message can also be caused when changing contents of files and you can disable it via mod autocheck off){ENDC}")
+        print("New version found. Consider updating via mod update. (this message can also be caused when changing contents of files and you can disable it via mod autocheck off)")
 
 def update():
     with open("./data/auth.txt") as file:
@@ -45,7 +45,7 @@ def update():
     local_sha = fetch_local_sha(True)
     if remote_sha != local_sha:
         check_output("git pull origin " + BRANCH)
-        print(f"{OKGREEN}The local repo has been updated){ENDC}")
+        print("The local repo has been updated")
         with open("./data/auth.txt", "w") as file:
             file.write(token)
         with open("./data/config.txt", "w") as file:
